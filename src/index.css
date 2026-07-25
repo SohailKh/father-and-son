@@ -224,13 +224,18 @@ body {
   box-shadow: 0 0 0 2px var(--color-cream), 0 0 0 4px rgba(164, 117, 81, 0.4);
 }
 
-/* Remove default button styles */
-button {
-  border: none;
-  background: none;
-  padding: 0;
-  cursor: pointer;
-  font: inherit;
+/* Remove default button styles.
+   Must live in the base layer: unlayered rules outrank Tailwind's layered
+   utilities, so an unlayered `button` reset would silently defeat every
+   bg-*/border/p-* utility used on a <button>. */
+@layer base {
+  button {
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+    font: inherit;
+  }
 }
 
 /* Remove default input styles */
