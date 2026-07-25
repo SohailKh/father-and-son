@@ -56,6 +56,8 @@ export function Footer() {
                   src="/logo.png"
                   alt="Father & Son Home Buyers — we buy houses in Southern California"
                   className="h-24 w-auto rounded-lg"
+                  width={512}
+                  height={512}
                   loading="lazy"
                   decoding="async"
                 />

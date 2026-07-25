@@ -16,6 +16,8 @@ export function WhyUs() {
                 src={FATHER_SON_IMAGE}
                 alt="Father and son team — local cash home buyers serving Southern California"
                 className="img-warm w-full h-full object-cover object-top"
+                width={800}
+                height={1200}
                 loading="lazy"
                 decoding="async"
               />

@@ -100,7 +100,10 @@ export function Hero() {
                 src="/logo.png"
                 alt="Father & Son Home Buyers logo — cash home buyers in Southern California"
                 className="h-40 w-auto rounded-lg shadow-lg"
-                loading="lazy"
+                width={512}
+                height={512}
+                loading="eager"
+                decoding="async"
               />
             </div>
 
