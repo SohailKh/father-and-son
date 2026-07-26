@@ -8,6 +8,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#3d2b1f" />
 
+    <!-- Google Analytics (GA4) — skipped on localhost and during prerender -->
+    <script>
+      (function () {
+        var host = location.hostname;
+        if (host === 'localhost' || host === '127.0.0.1' || host === '') return;
+        var id = 'G-0BTH7MJ5ND';
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () { window.dataLayer.push(arguments); };
+        window.gtag('js', new Date());
+        window.gtag('config', id, { send_page_view: false });
+      })();
+    </script>
+
     <!-- Preload LCP hero image -->
     <link rel="preload" as="image" href="/hero-home.jpg" fetchpriority="high" />
 

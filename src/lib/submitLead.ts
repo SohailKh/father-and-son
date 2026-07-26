@@ -1,3 +1,5 @@
+import { trackEvent } from './analytics';
+
 export interface LeadFormData {
   address: string;
   city?: string;
@@ -57,6 +59,7 @@ export async function submitLead(data: LeadFormData): Promise<SubmitResult> {
     const result = await response.json();
 
     if (result.success) {
+      trackEvent('generate_lead', { form_source: data.source });
       return { success: true, message: "Thank you! We'll be in touch within 24 hours." };
     } else {
       console.error('Web3Forms error:', result);

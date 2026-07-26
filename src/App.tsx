@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Layout } from './components/layout';
 import { ScrollToTop } from './components/ScrollToTop';
+import { Analytics } from './components/Analytics';
 
 // Eager-load HomePage (above the fold, most traffic)
 import { HomePage } from './pages';
@@ -26,6 +27,7 @@ function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
+      <Analytics />
       <Suspense fallback={<div className="min-h-screen" />}>
         <Routes>
           <Route path="/" element={<Layout />}>
