@@ -32,6 +32,29 @@ const situationLinks = situations.map((s) => ({
   label: s.name,
 }));
 
+// Real, verified profiles only — these are the same URLs the Organization
+// schema lists in `sameAs`, so the on-page links and the markup agree.
+const socialLinks = [
+  {
+    href: 'https://share.google/mYFjndAgX62vZejGs',
+    label: 'Google Business Profile',
+    icon: (
+      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12.24 10.28v3.64h5.16c-.21 1.34-1.55 3.93-5.16 3.93-3.11 0-5.64-2.57-5.64-5.75s2.53-5.75 5.64-5.75c1.77 0 2.95.75 3.63 1.4l2.47-2.38C16.75 3.85 14.68 3 12.24 3 7.15 3 3 7.14 3 12.1s4.15 9.1 9.24 9.1c5.34 0 8.88-3.75 8.88-9.03 0-.61-.07-1.07-.15-1.53h-8.73z" />
+      </svg>
+    ),
+  },
+  {
+    href: 'https://www.instagram.com/fathersonhomes',
+    label: 'Instagram',
+    icon: (
+      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zm0 3.72a6.12 6.12 0 100 12.24 6.12 6.12 0 000-12.24zm0 10.1a3.98 3.98 0 110-7.96 3.98 3.98 0 010 7.96zm7.79-10.34a1.43 1.43 0 11-2.86 0 1.43 1.43 0 012.86 0z" />
+      </svg>
+    ),
+  },
+];
+
 const promises = [
   'Cash offer within 24 hours',
   'Close in as little as 14 days',
@@ -89,6 +112,23 @@ export function Footer() {
                   </svg>
                   Serving Orange County, LA County & Inland Empire
                 </p>
+              </div>
+
+              {/* Social / review profiles — the same URLs as schema `sameAs`. */}
+              <div className="flex items-center gap-3 mt-6">
+                {socialLinks.map((social) => (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.label}
+                    title={social.label}
+                    className="w-9 h-9 rounded-full border border-cream/20 flex items-center justify-center text-cream/70 hover:text-terracotta hover:border-terracotta transition-warm"
+                  >
+                    {social.icon}
+                  </a>
+                ))}
               </div>
             </div>
 

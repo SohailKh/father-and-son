@@ -1,5 +1,9 @@
 import { useSEO } from '../hooks/useSEO';
-import { usePageSchema, homeLocalBusinessSchema } from '../lib/schema';
+import {
+  usePageSchema,
+  homeLocalBusinessSchema,
+  serviceAreaSchema,
+} from '../lib/schema';
 import {
   Hero,
   ValueProps,
@@ -20,7 +24,9 @@ export function HomePage() {
     canonical: 'https://fathersonhomes.com/',
   });
 
-  usePageSchema(homeLocalBusinessSchema());
+  // The business node points areaServed at #serviceArea, so the Place node has
+  // to ship on this page too for the reference to resolve.
+  usePageSchema([homeLocalBusinessSchema(), serviceAreaSchema()]);
 
   return (
     <>

@@ -2,10 +2,18 @@ import { useParams, Link } from 'react-router-dom';
 import { Container } from '../components/layout';
 import { CTASection } from '../components/sections';
 import { useSEO } from '../hooks/useSEO';
-import { usePageSchema, blogPostingSchema } from '../lib/schema';
+import {
+  usePageSchema,
+  blogPostingSchema,
+  blogPostBreadcrumbSchema,
+} from '../lib/schema';
 import { getPostBySlug, blogPosts } from '../lib/blog-posts';
 import { getSituationBySlug } from '../lib/situations';
 import { getCityBySlug } from '../lib/cities';
+import { TEAM } from '../lib/reviews';
+
+/** Every post is written by the son — the named author on all article schema. */
+const AUTHOR = TEAM[1];
 
 export function BlogPostPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -19,8 +27,10 @@ export function BlogPostPage() {
     canonical: post ? `https://fathersonhomes.com/blog/${post.slug}` : undefined,
   });
 
-  // One BlogPosting node for this article (no other graphs).
-  usePageSchema(post ? blogPostingSchema(post) : []);
+  // One BlogPosting node for this article, plus its breadcrumb trail.
+  usePageSchema(
+    post ? [blogPostingSchema(post), blogPostBreadcrumbSchema(post)] : []
+  );
 
   if (!post) {
     return (
@@ -69,9 +79,28 @@ export function BlogPostPage() {
             {post.title}
           </h1>
           <p className="text-lg text-driftwood mb-6">{post.description}</p>
-          <p className="text-sm text-driftwood/60">
-            Published {post.date} &middot; Father & Son Home Buyers
-          </p>
+
+          {/* Named author byline — the article's E-E-A-T signal, matching the
+              author in this page's BlogPosting schema. */}
+          <div className="flex items-center gap-3">
+            <img
+              src={AUTHOR.photo}
+              alt={AUTHOR.photoAlt}
+              className="w-11 h-11 rounded-full object-cover"
+              width={44}
+              height={44}
+              loading="lazy"
+              decoding="async"
+            />
+            <p className="text-sm text-driftwood/80">
+              By{' '}
+              <Link to="/about-us" className="font-medium text-espresso hover:text-terracotta transition-warm">
+                {AUTHOR.name}
+              </Link>
+              , {AUTHOR.role}
+              <span className="block text-driftwood/60">Published {post.date}</span>
+            </p>
+          </div>
         </Container>
       </section>
 
@@ -93,6 +122,41 @@ export function BlogPostPage() {
                 ))}
               </div>
             ))}
+          </div>
+
+          {/* Author bio — Google expects money-topic content to come from a
+              real, identifiable person with stated experience. */}
+          <div className="mt-12 p-6 bg-oatmeal/30 rounded-lg border border-espresso/10">
+            <div className="flex flex-col sm:flex-row gap-5">
+              <img
+                src={AUTHOR.photo}
+                alt={AUTHOR.photoAlt}
+                className="w-20 h-20 rounded-full object-cover flex-shrink-0"
+                width={80}
+                height={80}
+                loading="lazy"
+                decoding="async"
+              />
+              <div>
+                <p className="text-xs font-medium tracking-warm text-driftwood/60 mb-1">
+                  About the author
+                </p>
+                <h3 className="font-serif text-lg font-medium text-espresso mb-2">
+                  {AUTHOR.name} &middot;{' '}
+                  <span className="text-driftwood text-base">{AUTHOR.role}</span>
+                </h3>
+                <p className="text-sm text-driftwood leading-relaxed mb-3">{AUTHOR.bio}</p>
+                <Link
+                  to="/about-us"
+                  className="text-sm font-medium text-terracotta hover:underline inline-flex items-center gap-1"
+                >
+                  Meet the father &amp; son behind Father &amp; Son Home Buyers
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </Link>
+              </div>
+            </div>
           </div>
 
           {/* Related situation landing page — reciprocal link to the

@@ -2,6 +2,11 @@ import { Link } from 'react-router-dom';
 import { Container } from '../components/layout';
 import { CTASection } from '../components/sections';
 import { useSEO } from '../hooks/useSEO';
+import {
+  usePageSchema,
+  servicePageSchema,
+  pageBreadcrumbSchema,
+} from '../lib/schema';
 
 const eligibilityItems = [
   {
@@ -33,6 +38,19 @@ export function CashAdvancePage() {
     description: 'Need cash before your home closes? Father & Son Home Buyers offers cash advances to qualifying sellers in Southern California. Learn how it works.',
     canonical: 'https://fathersonhomes.com/cash-advance',
   });
+
+  // The differentiator no competitor leads with — give it a real Service entity.
+  usePageSchema([
+    servicePageSchema({
+      name: 'Cash Advance Before Closing',
+      serviceType: 'Cash advance to home sellers before closing',
+      description:
+        'Father & Son Home Buyers can advance eligible sellers cash before their home sale closes — for moving costs, deposits, urgent repairs, or bills that will not wait for closing day.',
+      path: '/cash-advance',
+    }),
+    pageBreadcrumbSchema('Cash Advance', '/cash-advance'),
+  ]);
+
   return (
     <>
       {/* Hero Section */}

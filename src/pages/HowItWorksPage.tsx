@@ -1,7 +1,11 @@
-import { useEffect } from 'react';
 import { Container } from '../components/layout';
 import { CTASection } from '../components/sections';
 import { useSEO } from '../hooks/useSEO';
+import {
+  usePageSchema,
+  servicePageSchema,
+  pageBreadcrumbSchema,
+} from '../lib/schema';
 
 const steps = [
   {
@@ -71,16 +75,11 @@ export function HowItWorksPage() {
     canonical: 'https://fathersonhomes.com/how-it-works',
   });
 
-  useEffect(() => {
-    const id = 'howto-schema';
-    let script = document.getElementById(id) as HTMLScriptElement | null;
-    if (!script) {
-      script = document.createElement('script');
-      script.id = id;
-      script.type = 'application/ld+json';
-      document.head.appendChild(script);
-    }
-    script.textContent = JSON.stringify({
+  // Goes through the same injector as every other page so there is exactly one
+  // managed set of page-level JSON-LD and nothing can be left behind on a route
+  // change (the audit's root schema problem was duplicate, orphaned blocks).
+  usePageSchema([
+    {
       '@context': 'https://schema.org',
       '@type': 'HowTo',
       'name': 'How to Sell Your House for Cash',
@@ -93,9 +92,16 @@ export function HowItWorksPage() {
         { '@type': 'HowToStep', 'position': 4, 'name': 'Choose Your Close Date', 'text': 'Accept the offer and pick the closing date that works for you — as fast as 14 days or whenever you\'re ready. You\'re in control.' },
         { '@type': 'HowToStep', 'position': 5, 'name': 'Get Paid', 'text': 'Close with a reputable title company. Walk away with cash in hand — no fees, no commissions, no hassle.' },
       ],
-    });
-    return () => { document.getElementById(id)?.remove(); };
-  }, []);
+    },
+    servicePageSchema({
+      name: 'Sell Your House Fast for Cash',
+      serviceType: 'Cash home purchase',
+      description:
+        'Get a no-obligation cash offer within 24 hours and close on your timeline — often in as little as 14 days, with no repairs, fees, or agent commissions.',
+      path: '/how-it-works',
+    }),
+    pageBreadcrumbSchema('How It Works', '/how-it-works'),
+  ]);
 
   return (
     <>

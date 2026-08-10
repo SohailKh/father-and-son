@@ -1,6 +1,11 @@
 import { Container } from '../components/layout';
 import { CTASection, Testimonials } from '../components/sections';
 import { useSEO } from '../hooks/useSEO';
+import {
+  usePageSchema,
+  aboutPageSchema,
+  pageBreadcrumbSchema,
+} from '../lib/schema';
 import { TEAM, CREDENTIALS } from '../lib/reviews';
 
 export function AboutUsPage() {
@@ -9,6 +14,9 @@ export function AboutUsPage() {
     description: 'Meet Ahmad and Dustin Hajiali — the father-and-son team behind Father & Son Home Buyers. 20+ years in construction and 4,000+ real estate transactions.',
     canonical: 'https://fathersonhomes.com/about-us',
   });
+
+  usePageSchema([aboutPageSchema(), pageBreadcrumbSchema('About Us', '/about-us')]);
+
   return (
     <>
       {/* Hero Section */}

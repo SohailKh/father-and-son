@@ -53,65 +53,136 @@
     <meta name="twitter:description" content="Get a fair cash offer within 24 hours. No repairs, no fees, no agents. Family-owned cash home buyers serving Orange County, LA County &amp; Inland Empire." />
     <meta name="twitter:image" content="https://fathersonhomes.com/og-image.png" />
 
-    <!-- Sitewide Organization Structured Data (valid on every page) -->
+    <!--
+      Sitewide identity graph — the ONLY schema that ships on every page.
+      Organization, WebSite, logo, and the two named founders. Page-level graphs
+      (LocalBusiness, Service, BlogPosting, FAQPage…) are injected per route by
+      src/lib/schema.ts and reference these nodes by @id, so the references
+      always resolve on whatever page the crawler lands on.
+    -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Organization",
-      "@id": "https://fathersonhomes.com/#organization",
-      "name": "Father & Son Home Buyers",
-      "url": "https://fathersonhomes.com",
-      "logo": "https://fathersonhomes.com/logo.png",
-      "foundingDate": "2024",
-      "founder": [
+      "@graph": [
         {
-          "@type": "Person",
-          "name": "Ahmad Hajiali",
-          "jobTitle": "Co-Founder & Head of Construction"
+          "@type": "Organization",
+          "@id": "https://fathersonhomes.com/#organization",
+          "additionalType": ["LocalBusiness", "RealEstateAgent"],
+          "name": "Father & Son Home Buyers",
+          "alternateName": "Father and Son Home Buyers",
+          "url": "https://fathersonhomes.com",
+          "description": "Family-owned cash home buyer serving Southern California. We buy houses as-is, close fast, and can advance cash before closing.",
+          "disambiguatingDescription": "A local father-and-son cash home buying company purchasing residential property directly from homeowners across Orange County, Los Angeles County, and the Inland Empire.",
+          "slogan": "A local father and son team you can trust.",
+          "logo": { "@id": "https://fathersonhomes.com/#logo" },
+          "image": { "@id": "https://fathersonhomes.com/#logo" },
+          "telephone": "+1-949-541-2003",
+          "email": "contact@fathersonhomes.com",
+          "foundingDate": "2024",
+          "founder": [
+            { "@id": "https://fathersonhomes.com/#father" },
+            { "@id": "https://fathersonhomes.com/#son" }
+          ],
+          "employee": [
+            { "@id": "https://fathersonhomes.com/#father" },
+            { "@id": "https://fathersonhomes.com/#son" }
+          ],
+          "knowsAbout": [
+            "Cash Home Buying",
+            "Real Estate Investing",
+            "As-Is Property Purchases",
+            "Foreclosure Solutions",
+            "Probate & Inherited Property Sales"
+          ],
+          "sameAs": [
+            "https://www.instagram.com/fathersonhomes",
+            "https://share.google/mYFjndAgX62vZejGs"
+          ],
+          "numberOfEmployees": {
+            "@type": "QuantitativeValue",
+            "minValue": 2,
+            "maxValue": 10
+          },
+          "areaServed": [
+            { "@type": "AdministrativeArea", "name": "Orange County", "sameAs": ["https://en.wikipedia.org/wiki/Orange_County,_California", "https://www.wikidata.org/wiki/Q5925"] },
+            { "@type": "AdministrativeArea", "name": "Los Angeles County", "sameAs": ["https://en.wikipedia.org/wiki/Los_Angeles_County,_California", "https://www.wikidata.org/wiki/Q104994"] },
+            { "@type": "AdministrativeArea", "name": "Riverside County", "sameAs": ["https://en.wikipedia.org/wiki/Riverside_County,_California"] },
+            { "@type": "AdministrativeArea", "name": "San Bernardino County", "sameAs": ["https://en.wikipedia.org/wiki/San_Bernardino_County,_California", "https://www.wikidata.org/wiki/Q108053"] }
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "@id": "https://fathersonhomes.com/#contact",
+            "telephone": "+1-949-541-2003",
+            "email": "contact@fathersonhomes.com",
+            "contactType": "sales",
+            "areaServed": ["US-CA"],
+            "availableLanguage": ["English", "Spanish"]
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://fathersonhomes.com/#website",
+          "name": "Father & Son Home Buyers",
+          "url": "https://fathersonhomes.com",
+          "description": "Sell your house fast for cash in Southern California.",
+          "publisher": { "@id": "https://fathersonhomes.com/#organization" },
+          "inLanguage": "en-US",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://fathersonhomes.com/service-areas?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "ImageObject",
+          "@id": "https://fathersonhomes.com/#logo",
+          "url": "https://fathersonhomes.com/logo.png",
+          "contentUrl": "https://fathersonhomes.com/logo.png",
+          "caption": "Father & Son Home Buyers",
+          "width": 512,
+          "height": 512
         },
         {
           "@type": "Person",
+          "@id": "https://fathersonhomes.com/#father",
+          "name": "Ahmad Hajiali",
+          "givenName": "Ahmad",
+          "familyName": "Hajiali",
+          "jobTitle": "Co-Founder & Head of Construction",
+          "worksFor": { "@id": "https://fathersonhomes.com/#organization" },
+          "description": "Ahmad brings more than 20 years of hands-on experience in home renovation, contracting, and residential construction. His deep construction knowledge lets our team accurately evaluate each property and understand exactly what it takes to bring a home back to its full potential.",
+          "image": "https://fathersonhomes.com/team-father.jpg",
+          "url": "https://fathersonhomes.com/about-us",
+          "telephone": "+1-949-541-2003",
+          "knowsLanguage": ["en-US"],
+          "knowsAbout": [
+            "Residential Construction",
+            "Home Renovation",
+            "As-Is Property Purchases",
+            "Cash Home Buying"
+          ]
+        },
+        {
+          "@type": "Person",
+          "@id": "https://fathersonhomes.com/#son",
           "name": "Dustin Hajiali",
-          "jobTitle": "Co-Founder & Head of Acquisitions"
+          "givenName": "Dustin",
+          "familyName": "Hajiali",
+          "jobTitle": "Co-Founder & Head of Acquisitions",
+          "worksFor": { "@id": "https://fathersonhomes.com/#organization" },
+          "description": "Dustin has been involved in real estate since the age of 17, with experience spanning lending, construction, acquisitions, and dispositions. Over his career he has participated in more than 4,000 real estate transactions, giving him a deep understanding of how to evaluate properties and navigate complex situations.",
+          "image": "https://fathersonhomes.com/team-son.jpg",
+          "url": "https://fathersonhomes.com/about-us",
+          "telephone": "+1-949-541-2003",
+          "knowsLanguage": ["en-US"],
+          "knowsAbout": [
+            "Cash Home Buying",
+            "Real Estate Investing",
+            "Foreclosure Solutions",
+            "Probate & Inherited Property Sales"
+          ]
         }
-      ],
-      "sameAs": [
-        "https://www.instagram.com/fathersonhomes",
-        "https://share.google/mYFjndAgX62vZejGs"
-      ],
-      "numberOfEmployees": {
-        "@type": "QuantitativeValue",
-        "minValue": 2,
-        "maxValue": 10
-      },
-      "areaServed": [
-        { "@type": "AdministrativeArea", "name": "Orange County, CA" },
-        { "@type": "AdministrativeArea", "name": "Los Angeles County, CA" },
-        { "@type": "AdministrativeArea", "name": "Riverside County, CA" },
-        { "@type": "AdministrativeArea", "name": "San Bernardino County, CA" }
-      ],
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+1-949-541-2003",
-        "contactType": "sales",
-        "availableLanguage": ["English", "Spanish"]
-      }
-    }
-    </script>
-
-    <!-- WebSite Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Father & Son Home Buyers",
-      "url": "https://fathersonhomes.com",
-      "publisher": { "@id": "https://fathersonhomes.com/#organization" },
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://fathersonhomes.com/service-areas?q={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
+      ]
     }
     </script>
   </head>

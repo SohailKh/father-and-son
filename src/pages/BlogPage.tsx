@@ -2,6 +2,11 @@ import { Link } from 'react-router-dom';
 import { Container } from '../components/layout';
 import { CTASection } from '../components/sections';
 import { useSEO } from '../hooks/useSEO';
+import {
+  usePageSchema,
+  blogIndexSchema,
+  blogBreadcrumbSchema,
+} from '../lib/schema';
 import { blogPosts } from '../lib/blog-posts';
 
 export function BlogPage() {
@@ -11,6 +16,8 @@ export function BlogPage() {
       'Practical advice for Southern California homeowners facing foreclosure, inherited properties, as-is sales, and more. From Father & Son Home Buyers.',
     canonical: 'https://fathersonhomes.com/blog',
   });
+
+  usePageSchema([blogIndexSchema(blogPosts), blogBreadcrumbSchema()]);
 
   return (
     <>
