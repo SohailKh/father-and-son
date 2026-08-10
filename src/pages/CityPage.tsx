@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { Container } from '../components/layout';
 import { CTASection } from '../components/sections';
+import { RichText, RichSpan } from '../components/ui';
 import { useSEO } from '../hooks/useSEO';
 import {
   usePageSchema,
@@ -9,12 +10,15 @@ import {
   faqPageSchema,
 } from '../lib/schema';
 import { getCityBySlug, getNearbyCities } from '../lib/cities';
+import { getCityGuide } from '../lib/city-guides';
 import { getHubForCity } from '../lib/counties';
 import { getSituationsForCity } from '../lib/situations';
 
 export function CityPage() {
   const { slug } = useParams<{ slug: string }>();
   const city = slug ? getCityBySlug(slug) : undefined;
+  // Long-form local copy, where we have it for this city.
+  const guide = slug ? getCityGuide(slug) : undefined;
   const nearbyCities = slug ? getNearbyCities(slug) : [];
   const countyHub = city ? getHubForCity(city) : undefined;
   const citySituations = slug ? getSituationsForCity(slug) : [];
@@ -269,8 +273,54 @@ export function CityPage() {
         </Container>
       </section>
 
+      {/* In-depth local guide — agency-written copy, where we have it. */}
+      {guide && guide.length > 0 && (
+        <section className="py-16 md:py-20">
+          <Container size="narrow">
+            <div className="text-center mb-10">
+              <h2 className="font-serif text-3xl md:text-4xl font-medium text-espresso mb-4">
+                Selling a House in {city.name}: What to Know
+              </h2>
+              <p className="text-driftwood">
+                A closer look at this market, what we buy here, and who we help.
+              </p>
+            </div>
+            <div className="prose-warm">
+              {guide.map((section, i) => (
+                <div key={i} className="mb-8">
+                  {section.heading && (
+                    <h3 className="font-serif text-2xl font-medium text-espresso mb-4 mt-10 first:mt-0">
+                      {section.heading}
+                    </h3>
+                  )}
+                  {section.body && <RichText text={section.body} />}
+                  {section.bullets && (
+                    <ul className="space-y-3 mb-4">
+                      {section.bullets.map((bullet, j) => (
+                        <li key={j} className="flex items-start gap-3 text-driftwood leading-relaxed">
+                          <svg className="w-5 h-5 text-terracotta flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                          </svg>
+                          <span>
+                            {bullet.lead && (
+                              <strong className="font-medium text-espresso">{bullet.lead}: </strong>
+                            )}
+                            <RichSpan text={bullet.text} />
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  {section.outro && <RichText text={section.outro} />}
+                </div>
+              ))}
+            </div>
+          </Container>
+        </section>
+      )}
+
       {/* Why Cash vs. Listing */}
-      <section className="py-16 md:py-20">
+      <section className="py-16 md:py-20 bg-oatmeal/20">
         <Container size="narrow">
           <div className="text-center mb-12">
             <h2 className="font-serif text-3xl md:text-4xl font-medium text-espresso mb-4">

@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { Container } from '../components/layout';
 import { CTASection } from '../components/sections';
+import { RichText, RichSpan } from '../components/ui';
 import { useSEO } from '../hooks/useSEO';
 import {
   usePageSchema,
@@ -115,11 +116,25 @@ export function BlogPostPage() {
                     {section.heading}
                   </h2>
                 )}
-                {section.body.split('\n\n').map((paragraph, j) => (
-                  <p key={j} className="text-driftwood leading-relaxed mb-4">
-                    {paragraph}
-                  </p>
-                ))}
+                {section.body && <RichText text={section.body} />}
+                {section.bullets && (
+                  <ul className="space-y-3 mb-4">
+                    {section.bullets.map((bullet, j) => (
+                      <li key={j} className="flex items-start gap-3 text-driftwood leading-relaxed">
+                        <svg className="w-5 h-5 text-terracotta flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                        <span>
+                          {bullet.lead && (
+                            <strong className="font-medium text-espresso">{bullet.lead}: </strong>
+                          )}
+                          <RichSpan text={bullet.text} />
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                {section.outro && <RichText text={section.outro} />}
               </div>
             ))}
           </div>

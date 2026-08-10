@@ -287,7 +287,12 @@ interface BlogPostLike {
   description: string;
   date: string;
   category?: string;
-  sections?: { heading?: string; body: string }[];
+  sections?: {
+    heading?: string;
+    body?: string;
+    bullets?: { lead?: string; text: string }[];
+    outro?: string;
+  }[];
 }
 
 /** ISO 8601 for a post's human-readable date string ("February 28, 2026"). */
@@ -301,7 +306,14 @@ function isoDate(date: string) {
 /** Words in the article body — what `wordCount` is supposed to report. */
 function postWordCount(post: BlogPostLike) {
   const text = (post.sections ?? [])
-    .map((s) => `${s.heading ?? ''} ${s.body}`)
+    .map((s) =>
+      [
+        s.heading ?? '',
+        s.body ?? '',
+        ...(s.bullets ?? []).map((b) => `${b.lead ?? ''} ${b.text}`),
+        s.outro ?? '',
+      ].join(' ')
+    )
     .join(' ');
   const words = text.trim().split(/\s+/).filter(Boolean).length;
   return words || undefined;
