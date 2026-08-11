@@ -44,6 +44,7 @@ const CITIES: Record<string, PlaceRef> = {
   fullerton: { sameAs: [`${WIKI}/Fullerton,_California`] },
   orange: { sameAs: [`${WIKI}/Orange,_California`] },
   'costa-mesa': { sameAs: [`${WIKI}/Costa_Mesa,_California`] },
+  'mission-viejo': { sameAs: [`${WIKI}/Mission_Viejo,_California`] },
   'long-beach': { sameAs: [`${WIKI}/Long_Beach,_California`] },
   torrance: { sameAs: [`${WIKI}/Torrance,_California`] },
   downey: { sameAs: [`${WIKI}/Downey,_California`] },

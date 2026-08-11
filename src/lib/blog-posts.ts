@@ -236,7 +236,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'cash-offer-vs-agent-mission-viejo',
-    relatedCitySlugs: ['irvine', 'costa-mesa', 'orange'],
+    relatedCitySlugs: ['mission-viejo', 'irvine', 'costa-mesa'],
     title: 'Cash Offer vs. Listing with an Agent in Mission Viejo: An Honest Comparison',
     description:
       'Both paths have real merit and the right answer is not the same for everyone. Here is what each actually involves for a Mission Viejo homeowner, without the sales pitch.',

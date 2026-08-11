@@ -258,7 +258,7 @@ export function homeLocalBusinessSchema() {
 
 /**
  * The `Place` the homepage business node points `areaServed` at: state →
- * counties → all 22 cities, each linked to its Wikipedia/Wikidata entity. Ships
+ * counties → every city we serve, each linked to its real-world entity. Ships
  * on the homepage alongside the business node so the `@id` reference resolves.
  */
 export function serviceAreaSchema() {

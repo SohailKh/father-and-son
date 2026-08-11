@@ -6,7 +6,9 @@
  * Prose may carry inline links in `[label](/path)` form — see RichText.
  *
  * Source: Market My Market content package, August 2026. Offer-window wording
- * was normalized to the 24 hours the rest of the site promises.
+ * was normalized to the 24 hours the rest of the site promises. The
+ * mission-viejo entry is written in-house to the same structure — the package
+ * covered that city with a blog post but no location copy.
  */
 
 export interface CityGuideSection {
@@ -273,6 +275,38 @@ export const cityGuides: Record<string, CityGuideSection[]> = {
     {
       heading: 'Get a Cash Offer for Your Costa Mesa Home',
       body: 'If you own a home in Costa Mesa and you are exploring your options, we are happy to provide a clear, honest evaluation of what a direct cash sale would look like for your property. We also serve homeowners throughout Southern California.\n\nShare [your property details](/instant-offer) with us and we will follow up within one business day to discuss the home and schedule a visit.',
+    },
+  ],
+  'mission-viejo': [
+    {
+      body: 'Mission Viejo was built as one of South Orange County\'s original master-planned communities, and that history shapes almost every sale here. Whole neighborhoods went up within a few years of each other, which means a large share of the housing stock reached the same age at the same time — roofs, plumbing, electrical panels, and kitchens all coming due together. Homes that have been meticulously maintained do very well on the open market. Homes that have not can be a difficult, expensive listing to prepare, and that is where a direct cash sale makes more sense.\n\nFather & Son Home Buyers is a family-owned cash home buyer serving Mission Viejo and all of Orange County. We are a father and son team, and our construction background means we can look at a 1970s Mission Viejo tract home and price what it actually needs rather than guessing high to protect ourselves. We buy in as-is condition, charge no commissions or fees, and cover closing costs. See [how our process works](/how-it-works) for a full breakdown of each step.',
+    },
+    {
+      heading: 'How We Buy Homes in Mission Viejo',
+      body: 'You reach out, we schedule a visit to the property, and we present a fair cash offer within 24 hours of seeing it. If the offer works for you, we move to closing. If it does not, you owe nothing and there is no follow-up pressure.\n\nClosing can happen in as little as 14 days, or on whatever schedule fits your move. If you are coordinating with a 55+ community sale, an estate, or a purchase somewhere else, we build that timing into the transaction rather than asking you to work around ours.',
+    },
+    {
+      heading: 'What We Buy in Mission Viejo',
+      body: 'We purchase single-family homes, condos, and townhomes throughout Mission Viejo in any condition. That includes original-owner homes in Aegean Hills and Deerfield that have never been renovated, condos and attached homes in the 55+ communities off Marguerite Parkway, and hillside properties in Canyon Crest where slope, drainage, or deferred exterior work complicates a traditional sale.\n\nMission Viejo also carries more association structure than most Orange County cities — Lake Mission Viejo membership, master associations, and sub-association rules that can slow a conventional buyer down. We are used to working through association documents, transfer requirements, and dues balances as part of closing rather than treating them as reasons to renegotiate.',
+    },
+    {
+      heading: 'Who We Work With in Mission Viejo',
+      body: 'Mission Viejo sellers who reach out to us are usually in one of a few situations where a traditional listing adds friction instead of value:',
+      bullets: [
+        { lead: 'Families settling an estate', text: 'when a long-time Mission Viejo homeowner passes, heirs are often left with decades of belongings and a house that has not been updated since it was built. We buy as-is and handle the cleanout. [Our probate property guide](/blog/probate-home-sale-orange-county) covers the full process.' },
+        { lead: 'Owners downsizing out of a 55+ community', text: 'moving to be closer to family or into assisted living rarely waits for a listing to run its course. A cash sale gives you a firm date and a firm number to plan around.' },
+        { lead: 'Homes needing all-at-once repairs', text: 'when the roof, the HVAC, and the plumbing all come due in the same year, the prep bill for a traditional listing can run past what many owners want to spend. We take the property in its current condition.' },
+        { lead: 'Sellers who want privacy', text: 'no signage, no open houses, and no neighbors walking through. For a divorce, a health situation, or simply personal preference, a direct sale stays between us.' },
+      ],
+      outro: 'Whatever brought you here, we will give you an honest read on your options — including telling you when listing would serve you better than selling to us.',
+    },
+    {
+      heading: 'Why Sellers in Mission Viejo Choose Father & Son Home Buyers',
+      body: 'We are not an iBuyer algorithm or an out-of-state fund. Every property gets a real visit from our team, and every offer comes with an explanation of how we arrived at the number — the comparable sales we used, the condition we observed, and the work we expect to put in.\n\nYou pay nothing to sell to us. No commissions, no agent fees, no closing costs, and no repair credits negotiated at the last minute. The number on our offer is the number you receive at closing. Eligible sellers can also take a [cash advance before closing](/cash-advance) if you need funds for a deposit or a move before the sale is final.',
+    },
+    {
+      heading: 'Get a Cash Offer for Your Mission Viejo Home',
+      body: 'If you own a home in Mission Viejo and you are weighing your options, an offer from us is free and carries no obligation. We also buy throughout Orange County and the rest of Southern California.\n\nSend us [your property details](/instant-offer) and we will follow up within one business day to talk through the property and set up a visit.',
     },
   ],
   'long-beach': [

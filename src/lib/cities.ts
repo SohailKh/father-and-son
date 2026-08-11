@@ -100,6 +100,17 @@ export const cities: CityData[] = [
     situations: ['Job relocation or overseas moves', 'Homes needing major repairs before listing', 'Divorce or partnership dissolution', 'Sellers who prefer privacy over open houses'],
     blurb: "We buy Costa Mesa homes quickly and fairly — no open houses, no contingencies, no wait.",
   },
+  {
+    slug: 'mission-viejo',
+    name: 'Mission Viejo',
+    county: 'Orange County',
+    countySlug: 'orange-county',
+    state: 'CA',
+    description: "Mission Viejo is one of South Orange County's original master-planned communities, and many of its homes are still with their first owners. When those houses change hands, a traditional listing isn't always the right fit.",
+    neighborhoods: ['Lake Mission Viejo', 'Casta del Sol', 'Palmia', 'Aegean Hills', 'Canyon Crest', 'Deerfield'],
+    situations: ['Original-owner homes never updated since they were built', 'Estate and probate sales from 55+ communities', 'Downsizing on a fixed timeline', 'Homes with HOA or association complications'],
+    blurb: "From Lake Mission Viejo to the 55+ communities off Marguerite, we buy Mission Viejo homes exactly as they sit.",
+  },
 
   // LA County
   {
