@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-Disallow: /deal-desk
 Sitemap: https://fathersonhomes.com/sitemap.xml
