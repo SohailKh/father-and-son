@@ -22,6 +22,8 @@ const BlogPage = lazy(() => import('./pages/BlogPage').then(m => ({ default: m.B
 const BlogPostPage = lazy(() => import('./pages/BlogPostPage').then(m => ({ default: m.BlogPostPage })));
 const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage').then(m => ({ default: m.PrivacyPolicyPage })));
 const TermsOfServicePage = lazy(() => import('./pages/TermsOfServicePage').then(m => ({ default: m.TermsOfServicePage })));
+// Internal underwriting tool — not in Layout, not prerendered, noindex.
+const DealDeskPage = lazy(() => import('./pages/deal-desk/DealDeskPage').then(m => ({ default: m.DealDeskPage })));
 
 function App() {
   return (
@@ -47,6 +49,7 @@ function App() {
             <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
             <Route path="terms-of-service" element={<TermsOfServicePage />} />
           </Route>
+          <Route path="deal-desk" element={<DealDeskPage />} />
         </Routes>
       </Suspense>
     </BrowserRouter>
